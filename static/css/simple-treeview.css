@@ -1,0 +1,93 @@
+/* Remove margins and padding from the parent ul */
+.simple-treeview {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default bullets */
+.simple-treeview ul li {
+  list-style-type: none;
+}
+
+.assembly {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.subassembly {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.part {
+  margin-top: 15px;
+  margin-left: 1.2em;
+  list-style-type: square !important;
+}
+
+.purchase-assembly {
+  margin-top: 15px;
+}
+
+.bomrow-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bomrow-container-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.part-actions-delete {
+  margin-left: 1em;
+  background-color: #dd4646 !important;
+}
+
+.simple-treeview hr {
+  margin-top: 15px;
+}
+
+#treeview-filter-container {
+  margin-left: 40px;
+  margin-bottom: 1.5em;
+  width: 30%;
+}
+
+#treeview-filter {
+  width: 100%;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+  font: initial;
+  font-size: 13px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}

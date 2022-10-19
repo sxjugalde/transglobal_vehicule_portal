@@ -1,0 +1,44 @@
+{% load bom_structure_treeview_row_actions %}
+
+{% for pa_code, pa_parts in container.purchase_assemblies.items %}
+  <li class="purchase-assembly treeview-branch">
+    <div class="bomrow-container">
+      <div style="width: 75%;">
+        <span class="caret purchase-assembly-code">{{ pa_code }}</span>
+        <a class="purchase-assembly-filter" href="#treeview-filter" data-toggle="tooltip" data-placement="top" title="Filter by this purchase assembly kit">
+          <i class="fa fa-filter" style="margin-left: 0.25em;"></i>
+        </a>
+      </div>
+      <div style="width: 20%;">
+        {% bom_structure_treeview_row_actions bom_id=bom_id row=pa_parts|first row_actions=row_actions is_admin=is_admin %}
+      </div>
+    </div>
+    <ul class="nested">
+      {% for row in pa_parts %}
+        <li class="part">
+          <div>
+            <a href="#treeview-filter" class="part-code" data-toggle="tooltip" data-placement="top" title="Filter by this part">[P{{row.part_full_code}}]</a>&nbsp;
+              [Uses {{row.part_uses}}]&nbsp;
+              {{row.part_name}}
+          </div>
+          <hr>
+        </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+{% for row in container.parts %}
+  <li class="part">
+    <div class="bomrow-container">
+      <div style="width: 75%;">
+        <a href="#treeview-filter" class="part-code" data-toggle="tooltip" data-placement="top" title="Filter by this part">[P{{row.part_full_code}}]</a>&nbsp;
+        [Uses {{row.part_uses}}]&nbsp;
+        {{row.part_name}}
+      </div>
+      <div style="width: 20%;">
+        {% bom_structure_treeview_row_actions bom_id=bom_id row=row row_actions=row_actions is_admin=is_admin %}
+      </div>
+    </div>
+    <hr>
+  </li>
+{% endfor %}

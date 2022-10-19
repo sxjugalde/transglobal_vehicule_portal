@@ -1,0 +1,37 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n static %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation delete-selected-confirmation{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; <a href="{% url 'admin:app_list' app_label='vehicles' %}">{% translate 'Vehicles' %}</a>
+    &rsaquo; <a href="{% url 'admin:vehicles_bom_changelist' %}">{% translate 'Bills of materials' %}</a>
+    &rsaquo; <a href="{% url 'admin:vehicles_bom_structure' bom_id=bom.id %}">{{ bom|capfirst }}</a>
+    &rsaquo; {{ part_name|capfirst }}
+    &rsaquo; Delete
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="app-vehicles bom-delete-row">
+      <p>Are you sure you want to delete the Part <span style="font-weight: bold;">{{ part_name }}</span>, located in <span style="font-weight: bold;">{{ part_location }}</span>, from the bill of materials <span style="font-weight: bold;">{{ bom|capfirst }}</span>?</p>
+      </br>
+      {% if is_purchase_assembly %}
+        <p>Since this part belongs to a purchase assembly, all of the following related items will be deleted from the BOM as well:</p>
+        <ul>{{ purchase_assembly_members|unordered_list }}</ul>
+        </br>
+      {% endif %}
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div>
+        <input type="submit" value="{% translate 'Yes, I’m sure' %}">
+        <a href="{{ cancel_url }}" class="button cancel-link">{% translate "No, take me back" %}</a>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

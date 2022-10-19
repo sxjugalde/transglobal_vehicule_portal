@@ -1,0 +1,60 @@
+<li class="part">
+  <div class="part-content">
+    <div style="width: 75%;">
+      {% if row.purchase_assembly_full_code %}
+      <a href="#treeview-filter" class="part-content-purchase-assembly" data-toggle="tooltip" data-placement="top" title="Filter by this purchase assembly kit">[{{row.purchase_assembly_full_code}}]</a>&nbsp;
+      {% endif %}
+      <a href="#treeview-filter" class="part-content-part" data-toggle="tooltip" data-placement="top" title="Filter by this part">[P{{row.part_full_code}}]</a>&nbsp;
+      [Uses {{row.part_uses}}]&nbsp;
+      {{row.part_name}}
+    </div>
+    <div style="width: 20%;">
+      <div class="part-actions-container {% if row.purchase_assembly_full_code %}{{ row.purchase_assembly_full_code }}{% endif %}">
+        <span class="bomrow-id-aux" style="display: none;">{{ row_id }}</span>
+        {% if not is_admin %}
+          {% if "change-qty" in row_actions %}
+            <button
+              class="add-cart-row-btn btn btn-outline-primary btn-pill btn-sm {% if row.amount_in_cart > 0 %}hidden{% else %}visible{% endif %}"
+              {% if row.purchase_assembly_full_code %}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="This will add every member of the {{row.purchase_assembly_full_code}} kit to the cart"
+              {% endif %}>
+              <i class="fa fa-cart-plus mr-2"></i>
+              Add
+            </button>
+            <input
+              class="upsert-cart-row-input form-control-sm {% if row.amount_in_cart > 0 %}visible{% else %}hidden{% endif %}"
+              type="number"
+              value="{% if row.amount_in_cart > 0 %}{{ row.amount_in_cart }}{% else %}1{% endif %}"
+              min="1"
+              max="2147483647"
+              {% if row.purchase_assembly_full_code %}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="This will update every member of the {{row.purchase_assembly_full_code}} kit in the cart"
+              {% endif %}
+              style="width: 6em;"/>
+            <span
+              class="delete-cart-row-btn pointer ml-2 {% if row.amount_in_cart > 0 %}visible{% else %}hidden{% endif %}"
+              aria-label="Delete row"
+              {% if row.purchase_assembly_full_code %}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="This will delete every member of the {{row.purchase_assembly_full_code}} kit in the cart"
+              {% endif %}
+              >
+              <i class="fa fa-trash-o trash-icon" aria-hidden="true"></i>
+            </span>
+          {% endif %}
+        {% endif %}
+        {% if is_admin %}
+          {% if "delete" in row_actions %}
+            <span><a class="button part-actions-delete" href="{% url 'admin:vehicles_bomrow_delete' bom_id row_id %}" title="Delete" aria-label="Delete"><i class="fa fa-times" aria-hidden="true"></i></a><span>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <hr>
+</li>

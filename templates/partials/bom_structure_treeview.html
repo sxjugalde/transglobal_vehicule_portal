@@ -1,0 +1,27 @@
+{% load bom_structure_treeview_row %}
+
+<div id="simple-treeview" class="simple-treeview">
+  <div id="treeview-filter-container" class="input-group">
+    <input id="treeview-filter" class="form-control" type="text" placeholder="Filter..." value="">
+  </div>
+  <ul id="simple-treeview-ul">
+    {% for assembly_code, assembly in bom_structure.items %}
+    <li class="assembly treeview-branch">
+      <span class="caret">{{ assembly.str }}</span>
+      <ul class="nested">
+        {% comment %} Print subassembly, followed by PAs and parts inside. {% endcomment %}
+        {% for subassembly_code, subassembly in assembly.subassemblies.items %}
+        <li class="subassembly treeview-branch">
+          <span class="caret">{{ subassembly.str }}</span>
+          <ul class="nested">
+            {% bom_structure_treeview_row container=subassembly bom_id=bom_id row_actions=row_actions is_admin=is_admin %}
+          </ul>
+        </li>
+        {% endfor %}
+        {% comment %} Print assembly level PAs and parts. {% endcomment %}
+        {% bom_structure_treeview_row container=assembly bom_id=bom_id row_actions=row_actions is_admin=is_admin %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

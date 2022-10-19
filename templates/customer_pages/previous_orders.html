@@ -1,0 +1,68 @@
+{% extends 'customer_pages/base_layout.html' %}
+
+{% load i18n static %}
+
+{% block content %}
+  <div class="page-header mt-3">
+    <h4>Previous Orders</h4>
+  </div>
+
+  <div style="margin-top: 2.5em;">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-header">
+          <tr>
+            <th class="table-header-column" scope="col">ID</th>
+            <th class="table-header-column" scope="col">Status</th>
+            <th class="table-header-column" scope="col">Created by [Username]</th>
+            <th class="table-header-column" scope="col">Created by [Email]</th>
+            <th class="table-header-column" scope="col">Created on</th>
+            <th class="table-header-column" scope="col">Last modified by</th>
+            <th class="table-header-column" scope="col">Last modified on</th>
+            <th class="table-header-column" scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in previous_orders_list %}
+            <tr>
+              <td>{{ order.id }}</td>
+              <td>{{ order.order_status }}</td>
+              <td>{{ order.user_username }}</td>
+              <td>{{ order.user_email }}</td>
+              <td>{{ order.created_on }}</td>
+              <td>{{ order.modified_by }}</td>
+              <td>{{ order.modified_on }}</td>
+              <td><a class="button" href="{% url 'order_details' order.id %}" title="View details" aria-label="View details" data-toggle="tooltip" data-placement="top"><i class="fa fa-eye"></i></a></td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="8">
+                <div style="text-align: center;">No previous orders found.</div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-around" style="margin-top: 2.5em;">
+      <div class="pagination">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+
+              <span class="current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

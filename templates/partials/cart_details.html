@@ -1,0 +1,44 @@
+<div class="cart-details">
+  {% for vin, contents in cart_details.items %}
+    <div class="card minor-box-shadow">
+      <div class="card-header {{ header_classes|join:" " }}">
+        {% if is_admin %}
+          <h2>VEHICLE {{ vin }}{% if contents.nickname %} - {{ contents.nickname }}{% endif %} - [{{ contents.bom_code }}] {{ contents.bom_name }}</h2>
+        {% else %}
+          <h5 class="my-0">Vehicle {{ vin }}{% if contents.nickname %} - {{ contents.nickname }}{% endif %}</h5>
+        {% endif %}
+      </div>
+      <div class="card-body">
+        {% if contents.parts %}
+          <ul class="mb-0">
+            {% for part_full_code, part_appeareances in contents.parts.items %}
+              {% for part in part_appeareances %}
+                <li>{{ part.part_location }} - [{{ part.part_full_code }}] [Uses {{part.part_uses}}] {{ part.part_name }} <b>(x{{ part.quantity }})</b></li>
+                <hr>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if contents.purchase_assemblies %}
+          <ul class="mb-0">
+            {% for purchase_assembly_full_code, details in contents.purchase_assemblies.items %}
+              <li>{{ purchase_assembly_full_code }} <b>(x{{details.quantity}})</b></li>
+              {% if is_admin %}
+                <li style="list-style-type:none">
+                  <ul>
+                    {% for part in details.contents %}
+                      <li>{{ part.part_location }} - [{{ part.part_full_code }}] [Uses {{part.part_uses}}] {{ part.part_name }} (uses {{ part.part_uses }})</li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endif %}
+              <hr>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <br>
+  {% endfor %}
+</div>

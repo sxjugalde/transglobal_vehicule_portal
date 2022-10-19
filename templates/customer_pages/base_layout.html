@@ -1,0 +1,85 @@
+{% extends 'customer_pages/base.html' %}
+
+{% load i18n static %}
+
+{% block base_content %}
+  {{ block.super }}
+
+  <div class="base-layout h-100">
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <a class="navbar-brand align-self-center" href="{% url "home" %}">Transglobal{% if user_company %}<span style="font-weight: 300; font-size: 0.9rem;"> | {{ user_company }}{% endif %}</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown-1" aria-controls="navbarNavDropdown-1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown-1">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item align-self-center {% if page_name == 'home' %}active{% endif %}">
+              <a class="nav-link" href="{% url "home" %}">Home {% if page_name == 'home' %}<span class="sr-only">(current)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item align-self-center {% if page_name == 'previous_orders' %}active{% endif %}">
+              <a class="nav-link" href="{% url "previous_orders" %}">Previous Orders {% if page_name == 'previous_orders' %}<span class="sr-only">(current)</span>{% endif %}</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            {% comment %}
+            {% if user.is_staff or user.is_superadmin %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "admin:index" %}">View Admin</a>
+              </li>
+            {% endif %}
+            {% endcomment %}
+            <div class="mx-2 my-auto">
+              <div class="input-group input-group-seamless">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i id="navbar-search-icon" class="fa fa-search"></i>
+                    <div id="navbar-search-loading-spinner" class="spinner-border spinner-border-sm text-primary" style="display: none;" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+                <input class="form-control mr-sm-2 navbarSearchInput"
+                  style="width: 25rem;"
+                  type="search"
+                  placeholder="Search by VIN or nickname (min. 3 characters)"
+                  aria-label="Search by identification number or nickname"
+                  autocomplete="off">
+              </div>
+            </div>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white;" href="{% url "shopping_cart" %}" data-toggle="tooltip" data-placement="bottom" title="View shopping cart">
+                <i class="fa fa-shopping-cart" aria-label="Shopping Cart"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle pointer" style="color: white;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item">Hello, <b>{{ user }}</b></a>
+                  <a class="dropdown-item" href="{% url "profile_change" %}">Edit Profile</a>
+                  <a class="dropdown-item" href="{% url "password_change" %}">Change Password</a>
+                  <a class="dropdown-item" href="{% url "logout" %}">Log Out</a>
+                </div>
+            </li>
+          </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div>
+      {% include 'partials/toasts.html' %}
+      <div class="main-content-container container-fluid">
+        {% include 'partials/messages.html' %}
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer text-center">
+        Copyright &copy; 2020 &mdash; Transglobal, LLC
+    </footer>
+  </div>
+{% endblock base_content %}

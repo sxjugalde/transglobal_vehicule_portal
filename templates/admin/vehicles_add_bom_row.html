@@ -1,0 +1,56 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n static loading_spinner %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script src="{% static 'js/add-bom-row.js' %}"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; <a href="{% url 'admin:app_list' app_label='vehicles' %}">{% translate 'Vehicles' %}</a>
+    &rsaquo; <a href="{% url 'admin:vehicles_bom_changelist' %}">{% translate 'Bills of materials' %}</a>
+    &rsaquo; <a href="{% url 'admin:vehicles_bom_structure' bom_id=bom.id %}">{{ bom|capfirst }}</a>
+    &rsaquo; Add Part/PA
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="add-bom-row-screen">
+      <form action="" method="POST">
+          {% csrf_token %}
+          {{ selection_form.as_p }}
+          </br>
+          <hr>
+          <div id="part-form" class="module aligned">
+            {{ part_form.as_p }}
+          </div>
+          <div id="purchase-assembly-form" class="module aligned">
+            {{ purchase_assembly_form.as_p }}
+            </br>
+            <hr>
+            </br>
+            <div id="locations-formset-group">
+              {{ select_pa_location_formset.management_form }}
+              <div style="display:none;" id="locations-formset-template">
+                {{ select_pa_location_formset.empty_form.as_p }}
+              </div><!-- stores empty form for JS -->
+              <div id="locations-formsets"></div><!-- where the JS generated forms go -->
+            </div>
+          </div>
+          <div class="submit-row">
+              <input type="submit" class="default" value="Save">
+          </div>
+      </form>
+    </div>
+    {% loading_spinner text_to_show="Loading parts..." %}
+  </div>
+{% endblock content %}

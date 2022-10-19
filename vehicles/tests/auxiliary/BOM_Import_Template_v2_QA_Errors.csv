@@ -1,0 +1,29 @@
+PURCHASE ASSEMBLY,ASSEMBLY,,SUBASSEMBLY,,PART ID,,,PART INFORMATION,,,,,,,,
+Code,Code,Name,Code,Name,Code/#,Suffix,Revision,Name,QTY (1),Material,Purchased/Fabricated (Fab),Notes,Supplier,Dimensions/Supplier Part #,Purchase comments,
+,,,,,,,,,,,,,,,
+A1000200,1010,Frame,S03,Front Axle Mount,20016,0,,Washer,C,"Zinc Yellow-Chromate Plated Grade 8 Steel Washer for 1"" Screw Size, 1.062"" ID, 2"" OD",Purchase,,McMaster Carr,98023A038,,
+A1000200,1010,Front Frame,S01,Main,20030,0,B,Frame Piece - Front RH,1,Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B),Fab,,ALRO,"Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B)
+Approx   32.25 "" Long",,
+A1000200,,,S01,,20031,0,A,Frame Piece - Front Angled RH,1,Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B),Fab,,ALRO,"Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B)
+Approx   19.75 "" Long",,
+,1010,,S01,,20032,0,A,Frame Piece - Mid RH,1,Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B),Fab,,ALRO,"Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B)
+Approx   73.5 "" Long",,
+A1000200,NOT_VALID_CODE,Sample error,S01,,20033,0,A,Frame Piece - Mid Angle RH,1,Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B),Fab,,ALRO,"Rectangular Tubing: 4 x 6 x .50” Wall (ASTM A-500 Grade B)
+Approx   21 "" Long",,
+A1000201,1020,Fork Lift & Tilt,S01,Cage Weldment,20069,0,,Horizontal Support Lower,A,"1.0""  Plate A-36 HRS",Fab,,McMaster Carr,1.00 x 8.00 x 44.25,,
+A1000201,1020,,S01,,20070,0,,Horizontal Support Upper A,1,"1.0""  Plate A-36 HRS",Fab,,McMaster Carr,1.00 x 3.9 x  44.25,,
+A1000201,1020,,S01,,20071,0,,Horizontal Support Upper B,,"1.0""  Plate A-36 HRS",Fab,,McMaster Carr,1.00 x 3.0 x 44.25,,
+A1000201,1020,,S01,,20072,0,,Gusset,4,"1.0""  Plate A-36 HRS",Fab,,McMaster Carr,1.00 x 3 .0 x 3.0,,
+A1000201,1020,,S01,,20073,0,B,Vertical Supports Ends,4,"1.50"" Plate A-36 HRS",Fab,"Revision A - Corrected Plate width in BOM
+Rev B pin downsized to 2""",McMaster Carr,1.50 x 8.0 x 21.0,,
+A1000201,1020,,S01,,20074,0,B,Vertical Supports Middle,2,"1.50"" Plate A-36 HRS",Fab,"Revision A - Corrected Plate width in BOM
+Rev B pin downsized to 2""",ALRO,1.50 x 8.0 x 21.0,,
+A1000201,1050,,S01,,20075,0,,Lower Support,1,"1.0""  Plate A-36 HRS",Fab,,ALRO,1.00 x 3.38  x 44.25,,
+A1000201,1020,,S01,,20076,0,,Cage Stop Pin,2,Thompson Shaft 1.375 Dia.,Purchase,,ALRO,,Each Component is 1.375 dia x 7.375,
+A1000202,1020,,S02,Lift and Tilt - Forks,20077,1,A,Weldment: Fork Pin,1,Thompson Shaftt 2.0 Dia. ,Purchase,"Revision A -  pin downsized to 2""",ALRO,,Each Comnponent is  2.0 dia x 18.50,
+A1000202,1020,,S02,,20077,2,A,Weldment: Fork Pin - Stop Block,ASD,".75"" Plate A-36 HRS",Make,"Revision A -  pin downsized to 2""",ALRO,3.0 Dia x .75 Thick,,
+A1000202,1020,,S02,,20071,0,,Horizontal Support Upper B,,"1.0""  Plate A-36 HRS",Fab,,McMaster Carr,1.00 x 3.0 x 44.25,,
+,1020,,S01,,,0,,Dowels (Frame),36,"Dowel Pin, 4037 Alloy Steel, 3/8"" Diameter, 1-1/4"" Long",Purchase,,,98381A626,,
+,1020,,S01,,20141,0,,Screws (Frame,18,"Zinc-Plated Alloy Steel Socket Head Screw, 3/8""-16 Thread Size, 7/8"" Long",Purchased,,ALRO,90128A623,,
+,1020,,S01,,20075,0,,Lower Support Test,1,"1.0""  Plate A-36 HRS",Fab,,ALRO,1.00 x 3.38  x 44.25,,
+,1020,,S02,,20075,0,,Lower Support Test,2,"1.0""  Plate A-36 HRS",Fab,,ALRO,1.00 x 3.38  x 44.25,,

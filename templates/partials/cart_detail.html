@@ -1,0 +1,35 @@
+<div>
+  {% for vin, contents in cart_details.items %}
+  <div class="{{ header_classes|join:" " }}">
+    <h2>VEHICLE {{ vin }}{% if contents.nickname %} - {{ contents.nickname }}{% endif %}{% if show_bom %} - [{{ contents.bom_code }}] {{ contents.bom_name }}{% endif %}</h2>
+  </div>
+  <div>
+    {% if contents.parts %}
+    <ul>
+      {% for part_full_code, part_appeareances in contents.parts.items %}
+        {% for part in part_appeareances %}
+        <li>{{ part.part_location }} - [{{ part.part_full_code }}] {{ part.part_name }} (x{{ part.quantity }})</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  <div>
+    {% if contents.purchase_assemblies %}
+    <ul>
+      {% for purchase_assembly_full_code, details in contents.purchase_assemblies.items %}
+      <li>{{ purchase_assembly_full_code }} (x{{details.quantity}})</li>
+      <li style="list-style-type:none">
+        <ul>
+          {% for part in details.contents %}
+          <li>{{ part.part_location }} - [{{ part.part_full_code }}] {{ part.part_name }} (uses {{ part.part_uses }})</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  <br>
+  {% endfor %}
+</div>

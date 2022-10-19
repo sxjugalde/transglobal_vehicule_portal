@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>New quote request submitted by {{ order.company_name }}!</title>
+</head>
+<body>
+    {% load static %}
+
+    {% comment %} TODO: Reference publicly acccesible TG image. {% endcomment %}
+    {% comment %} <img src="{{ request.get_host }}{% static "img/transglobal_llc_logo.png" %}" width="200" height="70"/><br /><br />
+    <div style="border-top:3px solid #22BCE5">&nbsp;</div> {% endcomment %}
+    <span style="font-family:Arial;font-size:10pt">
+      <p>A new quote request has just been submitted by {{ order.company_name }}.</p>
+
+      <p style="font-weight: 300;">General details:</p>
+      <ul style="padding-left: 1rem;">
+        <li>Status: {{ order.order_status }}</li>
+        <li>Created by: {{ order.user_username }}</li>
+        <li>User email: {{ order.user_email }}</li>
+        <li>Company name: {{ order.company_name }}</li>
+        <li>Created on: {{ order.created_on }}</li>
+        <li>Last modified on: {{ order.modified_on }}</li>
+        <li>Last modified by: {{ order.modified_by }}</li>
+      </ul>
+
+      <p>For more information, please click <a href="https://{{ domain }}{% url 'admin:orders_order_changelist' %}">here</a> and log in to the administrative portal.<p>
+    </span>
+</body>
+</html>

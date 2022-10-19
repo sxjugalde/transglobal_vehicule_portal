@@ -1,0 +1,55 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n static loading_spinner most_requested_parts_result %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.datepicker').datepicker();
+    });
+  </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; Reports
+    &rsaquo; Most requested parts
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="most-requested-parts-report-screen">
+      <div class="module">
+        <h2>PARAMETERS</h2>
+      </div>
+      <form action="" method="POST">
+          {% csrf_token %}
+          <div class="module aligned">
+            {{ form.as_p }}
+          </div>
+          </br>
+          <div class="submit-row">
+            <input type="submit" class="default" name="search_report" value="Search">
+            <input type="submit" class="default" name="print_report" value="Print">
+          </div>
+      </form>
+      {% if report_items %}
+        <div class="module">
+          <h2>RESULTS</h2>
+        </div>
+        {% most_requested_parts_result report_items=report_items %}
+      {% endif %}
+    </div>
+    {% loading_spinner text_to_show="Generating report..." %}
+  </div>
+{% endblock content %}

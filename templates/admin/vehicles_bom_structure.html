@@ -1,0 +1,39 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n static bom_structure_treeview %}
+
+{% comment %} Add required static assets for bom_structure_treeview {% endcomment %}
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "css/simple-treeview.css" %}" />
+{% endblock %}
+{% block extrahead %}
+  {{ block.super }}
+  <script src="{% static 'js/simple-treeview.js' %}"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; <a href="{% url 'admin:app_list' app_label='vehicles' %}">{% translate 'Vehicles' %}</a>
+    &rsaquo; <a href="{% url 'admin:vehicles_bom_changelist' %}">{% translate 'Bills of materials' %}</a>
+    &rsaquo; {{ bom|capfirst }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="app-vehicles bom-structure">
+      <div class="module">
+        <h2>PARTS CONTAINED
+          <span class="header-actions" style="display: block; float: right;" >
+            <a class="button" style="" href="{{ vehicles_bomrow_add_url }}"><i class="fa fa-plus" aria-hidden="true"></i> Add Part/PA</a>
+          </span>
+        </h2>
+      </div>
+      <div>
+        {% bom_structure_treeview bom_id=bom.id bom_structure=bom_structure row_actions=row_actions is_admin=True %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

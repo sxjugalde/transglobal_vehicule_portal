@@ -1,0 +1,21 @@
+{% extends 'reports/report_base_layout.html' %}
+
+{% load most_requested_parts_result %}
+
+{% block content %}
+  {{ block.super }}
+  <div>
+    <h2>REPORT PARAMETERS</h2>
+    <ul>
+      <li>From date: {{ report_parameters.from_date }}</li>
+      <li>To date: {{ report_parameters.to_date }}</li>
+      <li>Count: {{ report_parameters.count }}</li>
+      {% if report_parameters.bom %}
+        <li>BOM: {{ report_parameters.bom }}</li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="datatable">
+    {% most_requested_parts_result report_items=report_items print_pdf=print_pdf %}
+  </div>
+{% endblock %}

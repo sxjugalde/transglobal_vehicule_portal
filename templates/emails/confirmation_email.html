@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>New account created for you!</title>
+</head>
+<body>
+    {% load static %}
+
+    {% comment %} TODO: Reference publicly acccesible TG image. {% endcomment %}
+    {% comment %} <img src="{{ request.get_host }}{% static "img/transglobal_llc_logo.png" %}" width="200" height="70"/><br /><br />
+    <div style="border-top:3px solid #22BCE5">&nbsp;</div> {% endcomment %}
+    <span style="font-family:Arial;font-size:10pt">
+        Hi <b>{{ user.username }},</b><br /><br />
+
+        A new account was created for you on <b>Transglobal's Vehicle Service Portal</b>.
+        {% if user.is_staff %}This will allow you to manage BOMs, vehicles, parts and more.{% endif %}
+        {% if not user.is_staff %}You've been assigned to the <b>{{ user.company }}</b> company. This will allow you to view your company's locations, vehicles and request quotes on required parts.{% endif %}
+        <br /><br />
+
+        Please click on the link below to confirm your registration:
+        <br /><br />
+
+        https://{{ domain }}{% url 'confirm-account' uidb64=uid token=token %}
+        <br /><br />
+
+        Once inside, please <b>remember to change your account's password</b>.
+        <br /><br />
+
+        If you run into any issues, please contact a system administrator.
+        <br /><br />
+
+        Thank you!
+    </span>
+</body>
+</html>

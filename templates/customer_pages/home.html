@@ -1,0 +1,45 @@
+{% extends 'customer_pages/base_layout.html' %}
+
+{% load i18n static %}
+
+{% block content %}
+  <div class="page-header mt-3">
+   <div class="row">
+  	<div class="col-xs-12 col-md-6 col-lg-4">
+    	<h4>Locations &amp; Vehicles</h4>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-8">
+    {%if user_company.logo%}
+    <img class="mx-auto d-block" src="{{user_company.logo.url}}" />
+    {%endif%}
+    </div>
+   </div>
+  </div>
+
+  {% for location, vehicles in vehicles_by_location.items %}
+    <div class="card minor-box-shadow mt-5">
+      <div class="card-header">
+        <h5 class="my-0">{{ location }}</h5>
+      </div>
+      <div class="card-body row justify-content-between location-card-body">
+        {% for vehicle in vehicles %}
+          <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card minor-box-shadow mb-4 ">
+              {% if vehicle.bom.thumbnail %}<img src="{{ vehicle.bom.thumbnail.url }}" class="card-img-top vehicle-card-img">
+              {% elif vehicle.bom.vehicle_family.thumbnail %}<img src="{{ vehicle.bom.vehicle_family.thumbnail.url }}" class="card-img-top vehicle-card-img">
+              {% else %}<img src="{% static "img/image_placeholder.jpg" %}" class="card-img-top vehicle-card-img">{% endif %}
+              <div class="card-body vehicle-card-body">
+                <p class="card-text mb-0 vehicle-vin"><b>VIN:</b> {{ vehicle.identification_number }}</p>
+                <p class="card-text mb-0 vehicle-nickname"><b>Nickname:</b> {{ vehicle.nickname }}</p>
+                <p class="card-text mb-0"><b>Model:</b> {{ vehicle.bom.code }}</p>
+                <p class="card-text mb-0"><b>BOM Level:</b> {{ vehicle.bom.name }}</p>
+                <p class="card-text"><small class="text-muted">Last updated on {{ vehicle.modified_on }}</small></p>
+                <a href="{% url "vehicle_details" vehicle.identification_number %}" class="btn btn-primary">View details &rarr;</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

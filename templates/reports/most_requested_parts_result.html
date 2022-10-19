@@ -1,0 +1,65 @@
+<div>
+  <div>
+    {% if print_pdf %}
+      <h2>PARTS SUMMARY</h2>
+    {% else %}
+      <h3>Parts summary:</h3>
+      <br>
+    {% endif %}
+    {% if report_items.parts %}
+    <table class="table table-hover">
+      <thead class="table-header">
+        <tr>
+          <th class="table-header-column" scope="col">#</th>
+          <th class="table-header-column" scope="col">Full Code</th>
+          <th class="table-header-column" scope="col">Name</th>
+          <th class="table-header-column" scope="col">Quantity Sum</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for part in report_items.parts %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ part.part_full_code }}</td>
+            <td>{{ part.part_name }}</td>
+            <td>{{ part.quantity_sum }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    {% else %}
+    <p>No parts requested within the parameters specified.</p>
+    {% endif %}
+  </div>
+  <div>
+    {% if print_pdf %}
+      <h2>PURCHASE ASSEMBLIES SUMMARY</h2>
+    {% else %}
+      <h3>Purchase assemblies summary:</h3>
+      <br>
+    {% endif %}
+    {% if report_items.purchase_assemblies %}
+    <table class="table table-hover">
+      <thead class="table-header">
+        <tr>
+          <th class="table-header-column" scope="col">#</th>
+          <th class="table-header-column" scope="col">Code</th>
+          <th class="table-header-column" scope="col">Quantity Sum</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pa in report_items.purchase_assemblies %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ pa.purchase_assembly_full_code }}</td>
+            <td>{{ pa.quantity_sum }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No purchase assemblies requested within the parameters specified.</p>
+    {% endif %}
+  </div>
+</div>

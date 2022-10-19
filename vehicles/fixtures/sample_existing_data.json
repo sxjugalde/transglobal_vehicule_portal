@@ -1,0 +1,140 @@
+[
+  {
+    "model": "vehicles.vehiclefamily",
+    "pk": 1,
+    "fields": {
+      "created_on": "2020-09-15T16:45:32.433Z",
+      "modified_on": "2020-09-15T16:45:32.433Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "name": "Mosaic Tractor",
+      "description": "Sample tractor vehicle family.",
+      "code": "MT"
+    }
+  },
+  {
+    "model": "vehicles.assembly",
+    "pk": 1,
+    "fields": {
+      "created_on": "2020-09-15T16:45:56.682Z",
+      "modified_on": "2020-09-15T16:45:56.682Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "name": "Fork Lift Assembly",
+      "code": "1020",
+      "vehicle_family": 1
+    }
+  },
+  {
+    "model": "vehicles.subassembly",
+    "pk": 1,
+    "fields": {
+      "created_on": "2020-09-15T16:46:17.288Z",
+      "modified_on": "2020-09-15T16:46:17.288Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "name": "Forks",
+      "code": "S02",
+      "full_code": "1020S02",
+      "vehicle_family": 1,
+      "assembly": 1
+    }
+  },
+  {
+    "model": "parts.part",
+    "pk": 1,
+    "fields": {
+      "created_on": "2020-09-11T18:16:53.687Z",
+      "modified_on": "2020-09-11T18:16:53.687Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "name": "Weldment: Fork Pin",
+      "code": 20077,
+      "suffix": 1,
+      "revision": "A",
+      "notes": "Revision A -  pin downsized to 2\"",
+      "material": "Thompson Shaft 2.0 Dia.",
+      "dimension": "",
+      "is_purchased": true,
+      "is_obsolete": false,
+      "full_code": "200771A"
+    }
+  },
+  {
+    "model": "parts.part",
+    "pk": 2,
+    "fields": {
+      "created_on": "2020-09-11T18:17:22.356Z",
+      "modified_on": "2020-09-11T20:13:27.527Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "name": "Weldment: Fork Pin - Stop Block",
+      "code": 20077,
+      "suffix": 2,
+      "revision": "A",
+      "notes": "Revision A -  pin downsized to 2\"",
+      "material": ".75\" Plate A-36 HRS",
+      "dimension": "3.0 Dia x .75 Thick",
+      "is_purchased": false,
+      "is_obsolete": false,
+      "full_code": "200772A"
+    }
+  },
+  {
+    "model": "parts.purchaseassembly",
+    "pk": 1,
+    "fields": {
+      "created_on": "2020-09-11T19:48:38.903Z",
+      "modified_on": "2020-09-11T19:48:57.148Z",
+      "created_by": 1,
+      "modified_by": 1,
+      "code": 1000202,
+      "parts_contained": "200771A-200772A",
+      "full_code": "A1000202"
+    }
+  },
+  {
+    "model": "parts.purchaseassemblypart",
+    "pk": 1,
+    "fields": {
+      "part": 1,
+      "purchase_assembly": 1,
+      "quantity": 2,
+      "full_code": "A1000202-200771A-2"
+    }
+  },
+  {
+    "model": "parts.purchaseassemblypart",
+    "pk": 2,
+    "fields": {
+      "part": 2,
+      "purchase_assembly": 1,
+      "quantity": 2,
+      "full_code": "A1000202-200772A-2"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$Ap2ZSe85iGFm$Dm1FCTuG6MZ4Ekk7L2YBlvxXbM+ZBTVBIT+Oyv8qCgk=",
+      "last_login": "2020-09-11T18:14:01.091Z",
+      "is_superuser": true,
+      "username": "sxadmin",
+      "first_name": "",
+      "last_name": "",
+      "email": "daniel.diaz@systems-x.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-09-11T18:07:29.553Z",
+      "created_on": "2020-09-11T18:07:30.101Z",
+      "modified_on": "2020-09-11T18:07:30.101Z",
+      "created_by": null,
+      "modified_by": null,
+      "deleted_at": null,
+      "company": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

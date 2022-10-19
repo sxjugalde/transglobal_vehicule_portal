@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style type="text/css">
+      @page {
+          size: a4 portrait;
+          margin: 0.5cm auto;
+          padding: 1cm;
+      }
+
+      .alignleft,
+      .alignright {
+        display: inline-block;
+      }
+      .alignleft {
+        padding-left: 100px;
+      }
+      .alignright {
+        padding-right: 100px;
+      }
+      .datatable table {
+        border: 1px solid #666666;
+        border-collapse:collapse;
+        border-color:#ccc;
+      }
+      .datatable th {
+        border: 1px solid #006fe6 !important;
+        border-bottom:1px solid #006fe6 !important;
+        background-color: #006fe6;
+        color: #FFFFFF;
+      }
+      .datatable td,
+      .datatable th {
+        border: 1px solid #666666;
+        font-size:11px;
+        line-height:13px;
+        border-bottom:1px solid #666666;
+        vertical-align:top;
+        padding:5px;
+        font-family:"Lucida Grande", Verdana, Arial, sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <span class="alignleft"><img src={% static "img/transglobal_llc_logo.png" %} alt="Transglobal" height="50"></span>
+          </td>
+          <td></td>
+          <td align="right" style="vertical-align: bottom;">
+            <span class="alignright" style="text-align">{{ current_date }}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+    <br>
+    <h1 style="text-align: center;">{{ title }}</h1>
+    <br>
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

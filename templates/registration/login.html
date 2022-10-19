@@ -1,0 +1,20 @@
+{% extends 'customer_pages/base_login_layout.html' %}
+
+{% load i18n static %}
+
+{% block card_content %}
+<h4 class="card-title">Login</h4>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <div class="form-group m-0">
+    <button type="submit" class="btn btn-primary btn-block">
+      Login
+    </button>
+  </div>
+  <div class="mt-4 text-center">
+    <a href="{% url "password_reset" %}">Forgot Password?</a>
+  </div>
+</form>
+{% endblock card_content %}

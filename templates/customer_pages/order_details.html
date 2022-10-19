@@ -1,0 +1,27 @@
+{% extends 'customer_pages/base_layout.html' %}
+
+{% load i18n static cart_details %}
+
+{% block content %}
+  <div class="page-header mt-3 mb-4">
+    <h4>Order #{{ order.id }}</h4>
+  </div>
+  <div style="margin-top: 2.5em;">
+    <h5 class="mb-4">General details:</h5>
+    <ul>
+      <li>Status: {{ order.order_status }}</li>
+      <li>Created by [username]: {{ order.user_username }}</li>
+      <li>Created by [email]: {{ order.user_email }}</li>
+      <li>Created on: {{ order.created_on }}</li>
+      <li>Last modified by: {{ order.modified_by }}</li>
+      <li>Last modified on: {{ order.modified_on }}</li>
+    </ul>
+    <br>
+
+    <h5 class="mb-4">Cart details:</h5>
+    {% if order_cart_details %}
+      {% cart_details cart_details=order_cart_details header_classes=order_cart_details_header_classes row_classes=order_cart_details_row_classes is_admin=False %}
+    {% else %}
+      <p style="font-size: 1.2rem;">Unable to locate associated cart!</p>
+    {% endif %}
+{% endblock content %}

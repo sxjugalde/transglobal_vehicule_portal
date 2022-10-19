@@ -1,0 +1,166 @@
+/* ------ GENERAL ------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.base-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content-container {
+  margin: 0 3em;
+  width: auto;
+}
+
+.main-footer {
+  margin-top: auto;
+  margin-bottom: 2em;
+  padding-top: 2em;
+}
+
+.minor-box-shadow {
+  box-shadow: 0 0.16875rem 0.1875rem rgba(90, 97, 105, 0.1),
+    0 0.1375rem 0.10625rem rgba(90, 97, 105, 0.1),
+    0 0.15rem 0.13125rem rgba(90, 97, 105, 0.12),
+    0 0.125rem 1.1875rem rgba(90, 97, 105, 0.1);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline-block;
+}
+
+.table-header {
+  background-color: rgba(90, 97, 105, 0.1) !important;
+}
+
+.table-header-column {
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  color: #212529;
+}
+
+/* ------ HOME PAGE ------ */
+
+.location-card-body::after {
+  content: "";
+  flex: auto;
+}
+
+.vehicle-card-img {
+  height: 8em;
+  object-fit: cover;
+}
+
+@media (min-width: 1200px) {
+  .vehicle-card-img {
+    height: 12em;
+  }
+}
+
+/* ------ VEHICLE DETAILS PAGE ------ */
+
+.upsert-cart-row-input::-webkit-inner-spin-button,
+.upsert-cart-row-input::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* ------ LOADER ------ */
+.loader-container {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 20; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.loader-content {
+  z-index: 30; /* Sit on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #006fe6;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.loader-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-top: 1rem;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------ OVERRIDES ------ */
+
+/* --- General --- */
+.card-header {
+  background-color: rgba(90, 97, 105, 0.1) !important;
+}
+
+/* --- Simple Treeview ---  */
+#treeview-filter-container {
+  margin-left: 0px !important;
+}
+
+@media (max-width: 1199.98px) {
+  #treeview-filter-container {
+    width: 50% !important;
+  }
+}
+
+#simple-treeview-ul {
+  padding-left: 0px !important;
+}
+
+/* --- Messages --- */
+.alert-secondary,
+.alert-info,
+.alert-success,
+.alert-warning,
+.alert-danger {
+  font-weight: 400 !important;
+}

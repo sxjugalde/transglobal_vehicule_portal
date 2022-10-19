@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quote request reviewed!</title>
+</head>
+<body>
+    {% load static %}
+
+    {% comment %} TODO: Reference publicly acccesible TG image. {% endcomment %}
+    {% comment %} <img src="{{ request.get_host }}{% static "img/transglobal_llc_logo.png" %}" width="200" height="70"/><br /><br />
+    <div style="border-top:3px solid #22BCE5">&nbsp;</div> {% endcomment %}
+    <span style="font-family:Arial;font-size:10pt">
+      <p>Hi <b>{{ user_username }},</b></p>
+
+      <p>Your quote request (ID #{{ order_id }}) has been reviewed by a member of our team. You should receive further information shortly.</p>
+
+      <p>For details on the quote request, please click <a href="https://{{ domain }}{% url 'order_details' order_id %}">here</a> and log into the portal.</p>
+
+      <p>If you run into any issues or require assistance, please contact a system administrator.<p>
+    </span>
+</body>
+</html>

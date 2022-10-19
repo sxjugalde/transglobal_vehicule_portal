@@ -1,0 +1,20 @@
+{% extends 'admin/index.html' %}
+
+{% comment %} Add some extra menu items, like reports. {% endcomment %}
+{% block content %}
+  <div id="content-main">
+    {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+
+    <div class="module">
+      <table>
+        <caption>
+          <span class="section" title="Reports">Reports</span>
+        </caption>
+        <tr>
+          <th scope="row"><a href="{% url 'reports_most_requested_parts' %}">Most requested parts</a></th>
+          <td><a href="{% url 'reports_most_requested_parts' %}" class="viewlink">View</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+{% endblock %}

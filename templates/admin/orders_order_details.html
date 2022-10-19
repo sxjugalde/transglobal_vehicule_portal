@@ -1,0 +1,50 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n static cart_details %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script>
+    function setStatusReviewed(order_id) {
+      review_order_url = "{% url 'admin:orders_set_reviewed' order_id=123456789 %}".replace(/123456789/, order_id.toString());
+
+      if (confirm(`Are you sure you wish to set order #${order_id} as reviewed?`)) {
+        location.href = review_order_url;
+      }
+    }
+  </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; <a href="{% url 'admin:app_list' app_label='orders' %}">{% translate 'Orders' %}</a>
+    &rsaquo; <a href="{% url 'admin:orders_order_changelist' %}">{% translate 'Orders' %}</a>
+    &rsaquo; {{ order.id }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="app-orders order-details">
+      <h2 style="font-weight: 300;">General details:</h2>
+      <ul>
+        <li>Status: {{ order.order_status }}</li>
+        <li>Created by: {{ order.user_username }}</li>
+        <li>User email: {{ order.user_email }}</li>
+        <li>Company name: {{ order.company_name }}</li>
+        <li>Created on: {{ order.created_on }}</li>
+        <li>Last modified on: {{ order.modified_on }}</li>
+        <li>Last modified by: {{ order.modified_by }}</li>
+      </ul>
+      <br>
+      {% cart_details cart_details=cart_details header_classes=cart_details_header_classes row_classes=cart_details_row_classes is_admin=True %}
+    </div>
+    <br>
+    {% if order.order_status == "CREATED" %}
+      <span style="display: block; float: right;" >
+        <a class="button" onclick="setStatusReviewed({{ order.id }})" title="Set as reviewed" aria-label="Set as reviewed"><i class="fa fa-check"></i> Mark as reviewed</a>
+      </span>
+    {% endif %}
+  </div>
+{% endblock content %}
