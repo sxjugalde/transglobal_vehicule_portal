@@ -1,2 +1,0 @@
-this is file1.txt
-New line in the file1.txt

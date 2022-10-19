@@ -1,3 +1,0 @@
-this is file2.txt 
-this line was added locally
-this line was added on cloud
