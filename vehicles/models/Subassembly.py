@@ -12,8 +12,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Subassembly(AuditableModel):
     """Mid level in the BOM hierarchy. Groups parts, and is contained in assemblies."""
-
-    name = models.CharField(_('Sub Assembly Code'), blank=False, max_length=50)
+#renaming from Sub Assembly code to Sub Assembly Name
+    name = models.CharField(_('Sub Assembly Name'), blank=False, max_length=50)
     code = models.CharField(
         _('Sub Assembly Code'),
         blank=False,

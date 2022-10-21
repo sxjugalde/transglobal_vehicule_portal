@@ -13,9 +13,9 @@ class BOM(AuditableModel, ThumbnailModel):
 
     # BOM import file paths
     BOM_IMPORT_FOLDER = "uploads/boms/"
-
+#renaming from BOM CODE to Model Code
     name = models.CharField(_('BOM Name'), blank=False, max_length=50)
-    code = models.CharField(_('BOM Code'), blank=False, max_length=20)
+    code = models.CharField(_('Model Code'), blank=False, max_length=20)
     description = models.TextField(blank=True)
     revision = models.CharField(
         _('BOM Rev Level'),

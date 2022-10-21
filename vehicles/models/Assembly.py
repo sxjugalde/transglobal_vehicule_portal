@@ -9,8 +9,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Assembly(AuditableModel):
     """Topmost level in the BOM hierarchy. Groups subassemblies and parts."""
-
-    name = models.CharField(_('Parent Assembly Code'), blank=False, max_length=50)
+#renaming to from Parent Assembly Code to Parent Assembly Name
+    name = models.CharField(_('Parent Assembly Name'), blank=False, max_length=50)
     code = models.CharField(
         _('Parent Assembly Code'),
         blank=False,
