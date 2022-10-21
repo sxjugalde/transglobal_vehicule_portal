@@ -30,7 +30,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -92,14 +92,15 @@ MANAGERS = [x.split(":") for x in env.list("DJANGO_MANAGERS", default=[])]
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#change variables to hardcode, check notepad
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": env.str("DATABASE_HOST"),  # noqa
-        "USER": env.str("DATABASE_USER"),  # noqa
-        "PASSWORD": env.str("DATABASE_PASSWORD"),  # noqa
-        "PORT": env.str("DATABASE_PORT"),  # noqa
-        "NAME": env.str("DATABASE_NAME"),  # noqa
+        "HOST": 'Localhost',  # noqa
+        "USER": 'postgres',  # noqa
+        "PASSWORD": 'DeleaversientraHP$$',  # noqa
+        "PORT": '5432',  # noqa
+        "NAME": 'vehicle_service_portal_dev',  # noqa
         "ATOMIC_REQUESTS": True,
     }
 }

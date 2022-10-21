@@ -7,7 +7,7 @@ Django based vehicle service system, with customer and administrative portals.
 ### Requirements
 
 - Python 3.8
-- Pipenv (used for package and virtualenv management). More info at: https://pypi.org/project/pipenv/.
+- Pipenv (used for package and virtualenv management). More info at: https://pypi.org/propyject/pipenv/.
 - PostgreSQL (preferred DBMS).
 - Visual Studio Code (preferred IDE).
 
