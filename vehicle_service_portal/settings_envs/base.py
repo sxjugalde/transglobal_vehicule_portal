@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from django.contrib.messages import constants as messages
+import os
 import environ
 
 # Get the root of the project
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     "customer_pages.apps.CustomerPagesConfig",
     "reports.apps.ReportsConfig",
     "users.apps.UsersConfig",
+    
 ]
 
 MIDDLEWARE = [
@@ -164,6 +166,7 @@ LOGGING = {
 public_root = root.path("public/")
 MEDIA_ROOT = str(public_root("media"))
 MEDIA_URL = env.str("MEDIA_URL", default="/media/")
+
 
 STATIC_ROOT = str(public_root("static"))
 STATIC_URL = env.str("STATIC_URL", default="/static/")
