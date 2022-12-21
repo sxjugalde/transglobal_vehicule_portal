@@ -8,7 +8,7 @@ deployment = env.str('DEPLOYMENT_ENV')
 SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT',default=False)
 
 # This code does not work. It does not redirect based on the variable above deployment. Text this section to make it work
-"""
+
 if deployment.lower() in ['prod', 'production', 'release']:
     from .settings_envs.production import *
 elif deployment.lower() in ['test', 'testing', 'qa']:
@@ -16,4 +16,4 @@ elif deployment.lower() in ['test', 'testing', 'qa']:
 elif deployment.lower() in ['dev', 'develop', 'development']:
     from .settings_envs.development import *
 
-"""
+
